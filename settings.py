@@ -1,0 +1,17 @@
+INSTALLED_APPS = [
+    ...,
+    'faq',
+    'ckeditor',
+    'rest_framework',
+]
+
+# Redis Cache Configuration
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
