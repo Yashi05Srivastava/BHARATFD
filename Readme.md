@@ -97,3 +97,66 @@ bash
 Copy
 Edit
 curl http://localhost:8000/api/faqs/
+Admin Panel
+Access the Django admin panel to manage FAQs:
+
+Create a Superuser:
+
+bash
+Copy
+Edit
+python manage.py createsuperuser
+Access the Admin Panel:
+
+Navigate to http://localhost:8000/admin/ and log in with the superuser credentials.
+
+Running Tests
+Install Test Dependencies:
+
+bash
+Copy
+Edit
+pip install pytest
+Run Tests:
+
+bash
+Copy
+Edit
+pytest
+Code Quality
+Ensure code adheres to PEP8 standards:
+
+Install Flake8:
+
+bash
+Copy
+Edit
+pip install flake8
+Run Flake8:
+
+bash
+Copy
+Edit
+flake8
+Contribution Guidelines
+Fork the Repository
+
+Create a New Branch:
+
+bash
+Copy
+Edit
+git checkout -b feature/your-feature-name
+Commit Changes:
+
+bash
+Copy
+Edit
+git commit -m "feat: Description of your feature"
+Push to Branch:
+
+bash
+Copy
+Edit
+git push origin feature/your-feature-name
+Create a Pull Request
