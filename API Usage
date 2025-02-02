@@ -1,0 +1,37 @@
+bash:
+# Fetch FAQs in English (default)
+curl http://localhost:8000/api/faqs/
+
+# Fetch FAQs in Hindi
+curl http://localhost:8000/api/faqs/?lang=hi
+
+# Fetch FAQs in Bengali
+curl http://localhost:8000/api/faqs/?lang=bn
+yaml:
+
+---
+
+### 10. **Docker Support**
+#### `Dockerfile`
+```Dockerfile
+FROM python:3.9
+
+WORKDIR /app
+COPY . .
+
+RUN pip install -r requirements.txt
+
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+docker-compose.yml:
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+  redis:
+    image: redis:alpine
+
