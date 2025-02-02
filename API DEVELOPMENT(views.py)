@@ -1,0 +1,28 @@
+from rest_framework import generics
+from rest_framework.response import Response
+from django.core.cache import cache
+from .models import FAQ
+from .serializers import FAQSerializer
+
+class FAQListView(generics.ListAPIView):
+    serializer_class = FAQSerializer
+
+    def get_queryset(self):
+        return FAQ.objects.all()
+
+    def list(self, request):
+        lang = request.query_params.get('lang', 'en')
+        faqs = cache.get(f"faqs_{lang}")
+        
+        if not faqs:
+            faqs = self.get_queryset()
+            # Cache the result to avoid repeated DB hits
+            cache.set(f"faqs_{lang}", faqs, timeout=3600)
+        
+        data = [
+            {
+                "question": faq.translate_question(lang),
+                "answer": faq.answer,
+            } for faq in faqs
+        ]
+        return Response(data)
