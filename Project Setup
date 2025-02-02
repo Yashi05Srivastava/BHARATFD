@@ -1,7 +1,0 @@
-# Create a new Django project and application
-django-admin startproject faq_project
-cd faq_project
-python manage.py startapp faq
-
-# Install required dependencies
-pip install django django-ckeditor redis googletrans==4.0.0-rc1 djangorestframework django-redis pytest flake8
